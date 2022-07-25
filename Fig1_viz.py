@@ -15,6 +15,7 @@ for g in np.arange(gse.shape[0]):
         conditionID[g] = 2
 
 gse.obs['conditionID'] = conditionID
+gse.write('/Users/katebridges/Downloads/GSE142471.h5ad')
 
 # PLOTTING data in UMAP space by cell type, separated by expr condition
 # conditions together - using default colormap for celltypes
