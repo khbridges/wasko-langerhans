@@ -2,6 +2,7 @@ import numpy as np
 import scanpy as sc
 import matplotlib.pyplot as plt
 
+# set figure params & read sc object
 sc.set_figure_params(figsize=(4, 4), fontsize=20)
 gse = sc.read('/Users/katebridges/Downloads/GSE142471.h5ad')
 
