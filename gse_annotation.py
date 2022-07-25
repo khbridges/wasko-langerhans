@@ -3,6 +3,7 @@ import scanpy as sc
 import matplotlib.pyplot as plt
 import matplotlib
 
+# import from pipeline
 from pipeline_functions import training_data_select
 from pipeline_functions import viz_training_data
 from pipeline_functions import one_hot_encode
