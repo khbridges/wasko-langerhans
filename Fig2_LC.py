@@ -79,6 +79,7 @@ cmap = matplotlib.cm.get_cmap('viridis')
 my_pal0 = {'Nonwounded': cmap(0.01),
            'Wounded': cmap(0.99)}
 
+# plotting expr of genes of interest as paired violin plots
 violinfig_dir = '/Users/katebridges/Documents/figures/forRenee/violin plots/'
 for g in range(genes_oi.shape[0]):
     expr_df = pd.DataFrame({'Condition': gse_LC.obs['conditionID'].map(cond_dict).values,
@@ -87,7 +88,7 @@ for g in range(genes_oi.shape[0]):
     plt.tight_layout()
     plt.savefig(violinfig_dir + genes_oi.iloc[g].values[0] + '.png'), plt.close()
 
-# last step: 2 sided wilcoxon rank sum tests to get stats for LC expr of top 50 priority genes, wounded vs. unwounded
+# 2 sided wilcoxon rank sum tests to get stats for LC expr of top 50 priority genes, wounded vs. unwounded
 lc_stat = np.zeros((np.unique(genes_oi).shape[0], 2))
 for g in range(np.unique(genes_oi).shape[0]):
     expr = np.array(gse_LC[:, np.unique(genes_oi)[g]].X.todense()).flatten()
