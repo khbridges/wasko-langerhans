@@ -3,9 +3,6 @@ import warnings
 import matplotlib.pyplot as plt
 import numpy as np
 import scanpy as sc
-import pandas as pd
-import scipy
-import seaborn as sb
 
 # for scran normalization (future version)
 # from rpy2.rinterface import RRuntimeWarning
