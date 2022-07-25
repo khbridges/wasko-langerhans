@@ -1,11 +1,6 @@
 import numpy as np
-import pandas as pd
 import scanpy as sc
 import matplotlib.pyplot as plt
-import matplotlib
-from matplotlib.colors import rgb2hex
-import seaborn as sns
-from scipy.stats import ranksums
 
 sc.set_figure_params(figsize=(4, 4), fontsize=20)
 gse = sc.read('/Users/katebridges/Downloads/GSE142471.h5ad')
