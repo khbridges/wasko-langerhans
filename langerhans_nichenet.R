@@ -97,7 +97,7 @@ best_upstream_ligands = ligand_activities %>% arrange(-pearson) %>% pull(test_li
 
 # only interested in LC-specific (& other cell type) signals moving forward...
 # best upstream ligands were written to file and manually evaluated by cell type specificity
-ligands_sorted <- read.csv(file = '/Users/katebridges/Documents/EC_ligands.csv')
+ligands_sorted <- read.csv(file = '/Users/katebridges/Downloads/EC_ligands.csv')
 keratin_ligand <- ligands_sorted$Ligands[which(ligands_sorted$Specificity == 'Keratinocyte')]
 fib_ligand <- ligands_sorted$Ligands[which(ligands_sorted$Specificity == 'Fibroblast')]
 mac_ligand <- ligands_sorted$Ligands[grepl('Macrophage', ligands_sorted$Specificity)]
@@ -107,9 +107,9 @@ lc_ligand <- ligands_sorted$Ligands[grepl('Langerhans', ligands_sorted$Specifici
 DotPlot(gse, features = lc_ligand, cols = "RdYlBu") + RotatedAxis()
 
 # inference & visualization of active target genes
-active_ligand_target_links_df = lc_ligand %>% lapply(get_weighted_ligand_target_links,geneset = geneset_oi, ligand_target_matrix = ligand_target_matrix, n = 100) %>% bind_rows() %>% drop_na()
+active_ligand_target_links_df = lc_ligand %>% lapply(get_weighted_ligand_target_links,geneset = geneset_oi, ligand_target_matrix = ligand_target_matrix, n = 500) %>% bind_rows() %>% drop_na()
 
-active_ligand_target_links = prepare_ligand_target_visualization(ligand_target_df = active_ligand_target_links_df, ligand_target_matrix = ligand_target_matrix, cutoff = 0.33)
+active_ligand_target_links = prepare_ligand_target_visualization(ligand_target_df = active_ligand_target_links_df, ligand_target_matrix = ligand_target_matrix, cutoff = 0.15)
 
 order_ligands = intersect(best_upstream_ligands, colnames(active_ligand_target_links)) %>% rev() %>% make.names()
 order_targets = active_ligand_target_links_df$target %>% unique() %>% intersect(rownames(active_ligand_target_links)) %>% make.names()
