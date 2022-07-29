@@ -58,7 +58,7 @@ correct_ind = np.arange(11)
 tot_lab, tot_ideal_ind, tot_traindata, tot_testdata = training_data_select(gse, markers, celltypes, cell_types, correct_ind)
 
 cmap = matplotlib.cm.get_cmap('inferno')
-viz_training_data(gse, tot_lab, tot_ideal_ind, cell_types, gse.obsm['X_umap'], cmap, '', (6, 5), 0.75)
+viz_training_data(gse, tot_lab, tot_ideal_ind, cell_types, gse.obsm['X_umap'], 'UMAP', cmap, '', (6, 5), 0.75)
 
 # neural network training for cell type classification
 learning_rate = 0.025  # altering learning rate to change how much neural net can adjust during each training epoch
